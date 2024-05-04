@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+
+// function Any takes a function literal and slice the returns true if any condtion is true
 func Any(f func(string) bool, a []string) bool {
 	for _, v := range a {
 		if f(v) {
