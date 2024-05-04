@@ -1,12 +1,17 @@
-##Instructions
+## Instructions
+```
 Write a function Any that returns true, for a string slice :
 
 if, when that string slice is passed through an f function, at least one element returns true.
-Expected function
+```
+# Expected function
+```
 func Any(f func(string) bool, a []string) bool {
 
 }
-##Usage
+```
+## Usage
+```
 Here is a possible program to test your function :
 
 package main
@@ -26,13 +31,17 @@ func main() {
 	fmt.Println(result1)
 	fmt.Println(result2)
 }
-##And its output :
-
+```
+# And its output :
+```
 $ go run .
 false
 true
 $
-##Notions
+```
+## Notions
+```
 Function literals
 Function declaration
 Function types
+```
