@@ -16,25 +16,24 @@ func IsPrime(a int) bool {
 		return false
 	}
 
-	for i := 2; i*i <= a; i +=2 {
-		if a % i == 0 {
+	for i := 2; i*i <= a; i += 2 {
+		if a%i == 0 {
 			return false
 		}
-	} 
+	}
 	return true
 }
 
 func isPerfectSqr(nb int) bool {
-	n := float64(nb)/2
+	n := float64(nb) / 2
 	for i := 1; i <= 1000; i++ {
-		n -= (n*n - float64(nb))/ 2*n
-		return n == float64(int64(n))
+		n -= (n*n - float64(nb)) / (2 * n)
 	}
-	return false
+	return n == float64(int(n))
 }
 
 func main() {
-	a := []int{1, 3, 3, 4, 5, 60764354}
+	a := []int{1, 2, 3, 4, 5, 25, 60764354}
 	fmt.Println(Map(IsPrime, a))
-	fmt.Println("is it a perfect sqr ",Map(isPerfectSqr,a))
+	fmt.Println("is it a perfect sqr ", Map(isPerfectSqr, a))
 }
