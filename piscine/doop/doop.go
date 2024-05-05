@@ -2,51 +2,60 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
+	if len(os.Args) != 4 {
+		return
+	}
+	fmt.Println("line 12")
 
-	// if len(os.Args) != 4 {
-	// 	return
-	// }
 
-	// arg1 := os.Args[1]
-	// arg2 := os.Args[2]
-	// arg3 := os.Args[3]
-	arg1 := 9223372036854775807
-	arg2 := "+"
-	arg3 := 1
+	arg1 := os.Args[1]
+	arg2 := os.Args[2]
+	arg3 := os.Args[3]
+	// arg1 := 9223372036854775807
+	// arg2 := "/"
+	// arg3 := 0
 
-	res := 
+	var res int
 
 	switch arg2 {
 	case "+":
-		sum(arg1, arg3)
+		res = sum(arg1, arg3)
 
 	case "-":
-		sub(arg1, arg3)
+		res = sub(arg1, arg3)
 
 	case "/":
-		div(arg1, arg3)
+		if arg3 == 0 {
+			os.Stdout.WriteString("No division by 0\n")
+			return
+		}
+		res = div(arg1, arg3)
 
 	case "*":
-		mult(arg1, arg3)
+		res = mult(arg1, arg3)
 
 	case "%":
-		modulo(arg1, arg3)
+		if arg3 == 0 {
+			os.Stdout.WriteString("No modulo by 0")
+			return
+		}
+		res = modulo(arg1, arg3)
 	default:
 		return
 	}
 
-	fmt.Println(arg1, arg2, arg3)
+	if res < -9223372036854775807 || res > 9223372036854775807 {
+		os.Exit(0)
+	}
 
+	fmt.Println(res)
 }
 
-func sum(a, b int) interface{} {
-	s := a + b
-	if a != 0 && s-b != a {
-		return nil
-	}
+func sum(a, b int) int {
 	return (a + b)
 }
 
@@ -54,19 +63,14 @@ func sub(a, b int) int {
 	return (a - b)
 }
 
-func div(a, b int) interface{} {
-	if b == 0 {
-		return "No division by 0"
-	}
+func div(a, b int) int {
 	return (a / b)
 }
+
 func mult(a, b int) int {
 	return (a * b)
 }
 
-func modulo(a, b int) interface{} {
-	if b == 0 {
-		return "No modulo by 0"
-	}
+func modulo(a, b int) int {
 	return (a % b)
 }
