@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
 
@@ -13,9 +12,6 @@ func main() {
 	if !ascii.NoError(words) {
 		return
 	}
-
-	colorFlag := flag.String("color", "reset", "color flag")
-	flag.Parse()
 
 	// sort flags with banner files
 	if words[1] == "-t" {
@@ -29,31 +25,30 @@ func main() {
 		if !ascii.CheckAscii(wordsArr) {
 			return
 		}
-		ascii.Ascii(content, wordsArr, *colorFlag)
+		ascii.Ascii(content, wordsArr)
 	} else if words[1] == "-s" {
 		content, error := ascii.Reader("shadow.txt", "\n")
 		if error != nil {
 			fmt.Println(error)
 			return
 		}
-		word := ascii.Arrange(words[3:])
+		word := ascii.Arrange(words[2:])
 		wordsArr := ascii.Slice(word)
 		if !ascii.CheckAscii(wordsArr) {
 			return
 		}
-		ascii.Ascii(content, wordsArr, *colorFlag)
+		ascii.Ascii(content, wordsArr)
 	} else {
 		content, error := ascii.Reader("standard.txt", "\n")
 		if error != nil {
 			fmt.Println(error)
 			return
 		}
-		word := ascii.Arrange(words[2:])
+		word := ascii.Arrange(words[1:])
 		wordsArr := ascii.Slice(word)
-		fmt.Println(wordsArr)
 		if !ascii.CheckAscii(wordsArr) {
 			return
 		}
-		ascii.Ascii(content, wordsArr, *colorFlag)
+		ascii.Ascii(content, wordsArr)
 	}
 }
