@@ -6,7 +6,7 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func main() {
+func maina() {
 	if len(os.Args) == 1 {
 		z01.PrintRune('0')
 		z01.PrintRune('\n')
@@ -42,3 +42,11 @@ func Itoa(nb int) string {
 	//return str
 	return string(result)
 }
+
+// func PrintNumRune(nb int) {
+// 	if nb == 0 {
+// 		return
+// 	}
+// 	PrintNumRune(nb/10)
+// 	z01.PrintRune(rune('0'+ (nb%10)))
+// }
