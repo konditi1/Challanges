@@ -648,7 +648,7 @@ func main() {
 
 func Chunk(slice []int, size int) {
 
-	var result [][]int
+	var arr [][]int
 	if size == 0 {
 		z01.PrintRune('\n')
 		return
@@ -659,22 +659,23 @@ func Chunk(slice []int, size int) {
 		if end > len(slice) {
 			end = len(slice)
 		}
-		result = append(result, slice[i:end])
+		arr = append(arr, slice[i:end])
 	}
+	PrintArr(arr)
+}
+
+func PrintArr(arr [][]int) {
 	z01.PrintRune('[')
-	for i, arr := range result {
+	for i, row := range arr {
 		z01.PrintRune('[')
-		for j, num := range arr {
-			if num == 0 {
-				z01.PrintRune('0')
-			}
-			PrintNumInRunes(num)
-			if j < len(arr)-1 {
+		for j, val := range row {
+			PrintNumInRunes(val)
+			if j != len(row)-1 {
 				z01.PrintRune(' ')
 			}
 		}
 		z01.PrintRune(']')
-		if i < len(result)-1 {
+		if i != len(arr)-1 {
 			z01.PrintRune(' ')
 		}
 	}
@@ -693,11 +694,12 @@ func Chunk(slice []int, size int) {
 func PrintNumInRunes(n int) {
 	var str string
 	if n == 0 {
-		str += string(n)
+		z01.PrintRune('0')
+		return
 	} else {
 		for n > 0 {
-			str += string('0' + n % 10)
-			n = n/10
+			str += string('0' + n%10)
+			n = n / 10
 		}
 	}
 	for _, c := range str {
