@@ -1344,3 +1344,105 @@ func Print(s string) {
 	}
 }
 ```
+## atoibase
+
+### Instructions
+
+Write a function that takes two arguments:
+
+- `s`: a numeric `string` in a given [base](https://simple.wikipedia.org/wiki/Base_(mathematics)).
+- `base`: a `string` representing all the different digits that can represent a numeric value.
+
+And return the integer value of `s` in the given `base`.
+
+If the base is not valid it returns `0`.
+
+Validity rules for a base :
+
+- A base must contain at least 2 characters.
+- Each character of a base must be unique.
+- A base should not contain `+` or `-` characters.
+
+String number must contain only elements that are in base.
+
+Only valid `string` numbers will be tested.
+
+The function **does not have** to manage negative numbers.
+
+### Expected function
+
+```go
+func AtoiBase(s string, base string) int {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function :
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.AtoiBase("125", "0123456789"))
+	fmt.Println(piscine.AtoiBase("1111101", "01"))
+	fmt.Println(piscine.AtoiBase("7D", "0123456789ABCDEF"))
+	fmt.Println(piscine.AtoiBase("uoi", "choumi"))
+	fmt.Println(piscine.AtoiBase("bbbbbab", "-ab"))
+}
+```
+
+And its output :
+
+```console
+$ go run .
+125
+125
+125
+125
+0
+$
+```
+```
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println(AtoiBase("1111101", "01"))          // Binary to Decimal
+	fmt.Println(AtoiBase("125", "0123456789"))      // Decimal to Decimal (should be 125)
+	fmt.Println(AtoiBase("7D", "0123456789ABCDEF")) // Hexadecimal to Decimal
+	fmt.Println(AtoiBase("uoi", "choumi"))          // Custom base "choumi" to Decimal
+	fmt.Println(AtoiBase("bbbbbab", "-ab"))        // Custom base with '-' (if needed)
+}
+
+func AtoiBase(str string, base string) int {
+	var baseMap = make(map[rune]int)
+	for i, c := range base {
+		if c == '-' || c == '+' {
+			return 0
+		}
+		baseMap[c] = i
+	}
+
+	power := 1
+	result := 0
+	for i := len(str) -1; i >= 0; i-- {
+		val, ok := baseMap[rune(str[i])]
+		if !ok {
+			return -1
+		}
+		result += power * val
+		power *= len(base)
+	} 
+		return result
+}
+```
