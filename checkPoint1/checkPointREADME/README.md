@@ -84,6 +84,291 @@ subjects/atoibase-exam/README.md
 Unescape
 View File
 @ -1,62 +0,0 @@
+
+## binarycheck
+### Instructions
+Write a function that takes an int as an argument and returns 0 if the number is odd, and 1 if the number is even.
+
+Expected function
+func BinaryCheck(nbr int32) int {
+
+}
+`
+Usage
+Here is a possible program to test your function:
+`
+package main
+
+import (
+    "fmt"
+    "piscine"
+)
+
+func main() {
+    fmt.Println(piscine.BinaryCheck(5))
+    fmt.Println(piscine.BinaryCheck(0))
+    fmt.Println(piscine.BinaryCheck(8))
+    fmt.Println(piscine.BinaryCheck(-9))
+    fmt.Println(piscine.BinaryCheck(-4))
+}
+`
+And its output:
+`
+$ go run .
+0
+1
+1
+0
+1
+`
+
+## byebyefirst
+
+### Instructions
+
+Write a function that takes a slice of `string`'s and returns a new slice without the first element.
+
+- If the slice is empty, return the empty slice.
+
+### Expected function
+
+```go
+func ByeByeFirst(strings []string) []string {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println(ByeByeFirst([]string{}))
+	fmt.Println(ByeByeFirst([]string{"one arg"}))
+	fmt.Println(ByeByeFirst([]string{"first", "second"}))
+	fmt.Println(ByeByeFirst([]string{"", "abcd", "efg"}))
+}
+```
+
+And its output:
+
+```console
+$ go run . | cat -e
+[]$
+[]$
+[second]$
+[abcd efg]$
+```
+
+## cameltosnakecase
+
+### Instructions
+
+Write a function that converts a `string` from `camelCase` to `snake_case`.
+
+- If the `string` is empty, return an empty `string`.
+- If the `string` is not `camelCase`, return the `string` unchanged.
+- If the `string` is `camelCase`, return the `snake_case` version of the `string`.
+
+For this exercise you need to know that `camelCase` has two different writing alternatives that will be accepted:
+
+- lowerCamelCase
+- UpperCamelCase
+
+Rules for writing in `camelCase`:
+
+- The word does not end on a capitalized letter (CamelCasE).
+- No two capitalized letters shall follow directly each other (CamelCAse).
+- Numbers or punctuation are not allowed in the word anywhere (camelCase1).
+
+### Expected function
+
+```go
+func CamelToSnakeCase(s string) string{
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println(CamelToSnakeCase("HelloWorld"))
+	fmt.Println(CamelToSnakeCase("helloWorld"))
+	fmt.Println(CamelToSnakeCase("camelCase"))
+	fmt.Println(CamelToSnakeCase("CAMELtoSnackCASE"))
+	fmt.Println(CamelToSnakeCase("camelToSnakeCase"))
+	fmt.Println(CamelToSnakeCase("hey2"))
+}
+```
+
+And its output:
+
+```console
+$ go run .
+Hello_World
+hello_World
+camel_Case
+CAMELtoSnackCASE
+camel_To_Snake_Case
+hey2
+```
+## capitalize
+
+### Instructions
+
+Write a function that capitalizes the first letter of each word **and** lowercases the rest.
+
+A word is a sequence of **alphanumeric** characters.
+
+### Expected function
+
+```go
+func Capitalize(s string) string {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function :
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.Capitalize("Hello! How are you? How+are+things+4you?"))
+}
+```
+
+And its output :
+
+```console
+$ go run .
+Hello! How Are You? How+Are+Things+4you?
+$
+```
+
+## canyoucount
+
+### Instructions
+
+Your program will receive some arguments. Count how many characters they have in total and print them.
+
+- If the number of arguments is invalid it should print `0`.
+
+### Usage
+
+```console
+$ go run . "hello" "how are you?" | cat -e
+17$
+$ go run . "hi" | cat -e
+2$
+$ go run . | cat -e
+0$
+```
+
+## capitalizing
+
+### Instructions
+
+Complete the `capitalize_first` **function** which converts the first letter of the string to uppercase.
+
+Complete the `title_case` **function** which converts the first letter of each word in a string to uppercase.
+
+Complete the `change_case` **function** which converts the uppercase letters of a string into lowercase, and the lowercase to uppercase.
+
+### Expected Functions
+
+```rust
+pub fn capitalize_first(input: &str) -> String {
+}
+
+pub fn title_case(input: &str) -> String {
+}
+
+pub fn change_case(input: &str) -> String {
+}
+```
+
+### Usage
+
+Here is a program to test your functions.
+
+```rust
+use capitalizing::*;
+
+fn main() {
+    println!("{}", capitalize_first("joe is missing"));
+    println!("{}", title_case("jill is leaving A"));
+    println!("{}",change_case("heLLo THere"));
+}
+```
+
+And its output
+
+```consoole
+$ cargo run
+Joe is missing
+Jill Is Leaving A
+HEllO thERE
+$
+```
+
+
+## cleanstr
+
+### Instructions
+
+Write a **program** that takes a `string`, and displays this `string` with exactly:
+
+- one space between words.
+- without spaces nor tabs at the beginning nor at the end.
+- with the result followed by a newline ("`\n`").
+
+A "word" is defined as a part of a `string` delimited either by spaces/tabs, or
+by the start/end of the `string`.
+
+If the number of arguments is not 1, or if there are no words to display, the
+program displays a newline("`\n`").
+
+### Usage :
+
+```console
+$ go run . "you see it's easy to display the same thing" | cat -e
+you see it's easy to display the same thing$
+$ go run . " only    it's  harder   "
+only it's harder$
+$ go run . " how funny" "Did you   hear Mathilde ?"
+
+$ go run . ""
+
+$
+```
+
+
+
+
 ## atoibase
 
 ### Instructions
@@ -327,16 +612,24 @@ func main() {
 }
 
 ## concatslice
+
 ### Instructions
-Write a function ConcatSlice() that takes two slices of integers as arguments and returns the concatenation of the two slices.
 
-Expected function
-`func ConcatSlice(slice1, slice2 []int) []int {
+Write a function `ConcatSlice()` that takes two slices of integers as arguments and returns the concatenation of the two slices.
 
-}`
-Usage
+### Expected function
+
+```go
+func ConcatSlice(slice1, slice2 []int) []int {
+
+}
+```
+
+### Usage
+
 Here is a possible program to test your function:
 
+```go
 package main
 
 import (
@@ -345,56 +638,116 @@ import (
 )
 
 func main() {
-	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{4, 5, 6}))
-	fmt.Println(piscine.ConcatSlice([]int{}, []int{4, 5, 6, 7, 8, 9}))
-	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{}))
-}
-And its output:
-
-$ go run .
-[1 2 3 4 5 6]
-[4 5 6 7 8 9]
-[1 2 3]
-
-7
-subjects/concatslice/README.md
-Unescape
-View File
-@ -21,12 +21,13 @@ package main
-
-import (
-	"fmt"
-	"piscine"
-)
-
-func main() {
-	fmt.Println(ConcatSlice([]int{1, 2, 3}, []int{4, 5, 6}))
-	fmt.Println(ConcatSlice([]int{}, []int{4, 5, 6, 7, 8, 9}))
-	fmt.Println(ConcatSlice([]int{1, 2, 3}, []int{}))
 	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{4, 5, 6}))
 	fmt.Println(piscine.ConcatSlice([]int{}, []int{4, 5, 6, 7, 8, 9}))
 	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{}))
 }
 ```
 
+And its output:
 
-12
-subjects/concatslice/main.go
-Unescape
-View File
-@ -0,0 +1,12 @@
+```console
+$ go run .
+[1 2 3 4 5 6]
+[4 5 6 7 8 9]
+[1 2 3]
+```
+## digitlen
+
+### Instructions
+
+Write a function `DigitLen()` that takes two integers as arguments and returns the times the first `int` can be divided by the second until it reaches zero.
+
+- The second `int` must be between **_2_** and **_36_**. If not, the function returns `-1`.
+- If the first `int` is negative, reverse the sign and count the digits.
+
+### Expected function
+
+```go
+func DigitLen(n, base int) int {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function:
+
+```go
 package main
 
 import (
 	"fmt"
-	"piscine"
 )
 
 func main() {
-	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{4, 5, 6}))
-	fmt.Println(piscine.ConcatSlice([]int{}, []int{4, 5, 6, 7, 8, 9}))
-	fmt.Println(piscine.ConcatSlice([]int{1, 2, 3}, []int{}))
+	fmt.Println(DigitLen(100, 10))
+	fmt.Println(DigitLen(100, 2))
+	fmt.Println(DigitLen(-100, 16))
+	fmt.Println(DigitLen(100, -1))
 }
+```
+
+And its output:
+
+```console
+$ go run . | cat -e
+3$
+7$
+2$
+-1$
+```
+## hashcode
+
+### Instructions
+
+Write a function called `HashCode()` that takes a `string` as an argument and returns a new **hashed** `string`.
+
+- The hash equation is computed as follows:
+
+`(ASCII of current character + size of the string) % 127, ensuring the result falls within the ASCII range of 0 to 127.`
+
+- If the resulting character is unprintable add `33` to it.
+
+### Expected function
+
+```go
+func HashCode(dec string) string {
+}
+```
+
+### Usage
+
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println(HashCode("A"))
+	fmt.Println(HashCode("AB"))
+	fmt.Println(HashCode("BAC"))
+	fmt.Println(HashCode("Hello World"))
+}
+```
+
+And its output:
+
+```console
+$ go run .
+B
+CD
+EDF
+Spwwz+bz}wo
+```
+
+
+
+
 
 ## fifthandskip
 ### Instructions
