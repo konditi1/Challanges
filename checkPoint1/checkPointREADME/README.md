@@ -1609,15 +1609,31 @@ $
 Lorem Ipsum Word$
 $
 `
-15
-subjects/slice/README.md
-Unescape
-View File
-@ -23,15 +23,18 @@ Here is a possible program to test your function :
+1## slice
+
+### Instructions
+
+The function receives a slice of strings and one or more integers, and returns a slice of strings. The returned slice is part of the received one but cut from the position indicated in the first int, until the position indicated by the second int.
+
+In case there only exists one int, the resulting slice begins in the position indicated by the int and ends at the end of the received slice.
+
+The integers can be negative.
+
+### Expected function
+
+```go
+func Slice(a []string, nbrs... int) []string{
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function :
+
 ```go
 package main
 
-import "fmt"
 import (
     "fmt"
     "piscine"
@@ -1625,11 +1641,6 @@ import (
 
 func main(){
     a := []string{"coding", "algorithm", "ascii", "package", "golang"}
-    fmt.Printf("%#v\n", Slice(a, 1))
-    fmt.Printf("%#v\n", Slice(a, 2, 4))
-    fmt.Printf("%#v\n", Slice(a, -3))
-    fmt.Printf("%#v\n", Slice(a, -2, -1))
-    fmt.Printf("%#v\n", Slice(a, 2, 0))
     fmt.Printf("%#v\n", piscine.Slice(a, 1))
     fmt.Printf("%#v\n", piscine.Slice(a, 2, 4))
     fmt.Printf("%#v\n", piscine.Slice(a, -3))
@@ -1638,48 +1649,14 @@ func main(){
 }
 ```
 
-
-## slice
-### Instructions
-T- he function receives a slice of strings and one or more integers, and returns a slice of strings. The returned slice is part of the received one but cut from the position indicated in the first int, until the position indicated by the second int.
-
-In case there only exists one int, the resulting slice begins in the position indicated by the int and ends at the end of the received slice.
-
-The integers can be negative.
-
-### Expected function
-`
-func Slice(a []string, nbrs... int) []string{
-
-}
-`
-Usage
-Here is a possible program to test your function :
-`
-package main
-
-import (
-    "fmt"
-    "piscine"
-)
-
-func main(){
-    a := []string{"coding", "algorithm", "ascii", "package", "golang"}
-    fmt.Printf("%#v\n", piscine.Slice(a, 1))
-    fmt.Printf("%#v\n", piscine.Slice(a, 2, 4))
-    fmt.Printf("%#v\n", piscine.Slice(a, -3))
-    fmt.Printf("%#v\n", piscine.Slice(a, -2, -1))
-    fmt.Printf("%#v\n", piscine.Slice(a, 2, 0))
-}
-`
-`
+```console
 $ go run .
 []string{"algorithm", "ascii", "package", "golang"}
 []string{"ascii", "package"}
 []string{"ascii", "package", "golang"}
 []string{"package"}
 []string(nil)
-`
+```
 
 ## sliceadd
 ### Instructions
@@ -1712,20 +1689,28 @@ $ go run .
 [1 2 3 4]
 [4]
 `
-## sliceremove
-#### Instructions
-- Write a function that takes a slice of integers and an int as arguments, if the given int exists in the slice then remove it, otherwise return the slice.
 
-If the slice is empty, return the slice itself.
-#### Expected function
-`
+## sliceremove
+
+### Instructions
+
+Write a function that takes a slice of integers and an `int` as arguments, if the given `int` exists in the slice then remove it, otherwise return the slice.
+
+- If the slice is empty, return the slice itself.
+
+### Expected function
+
+```go
 func SliceRemove(slice []int , num int) []int {
 
 }
-`
-Usage
+```
+
+### Usage
+
 Here is a possible program to test your function:
-`
+
+```go
 package main
 
 import (
@@ -1738,14 +1723,16 @@ func main() {
 	fmt.Println(SliceRemove([]int{}, 1))
 
 }
-`
+```
+
 And its output:
-`
+
+```console
 $ go run .
 [1 3]
 [3]
 []
-`
+```
 38
 subjects/sortwordarr-exam/README.md
 Unescape
@@ -1959,3 +1946,45 @@ func main() {
 	fmt.Print(piscine.WordFlip("     "))
 	fmt.Print(piscine.WordFlip(" hello  all  of  you! "))
 }
+
+## sliceadd
+
+### Instructions
+
+Write a function that takes a slice of integers and an `int` as arguments, adds the `int` to the slice and returns it.
+
+- If the slice is empty, return a slice with the new value.
+
+### Expected function
+
+```go
+func SliceAdd(slice []int , num int) []int {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println(SliceAdd([]int{1, 2, 3}, 4))
+	fmt.Println(SliceAdd([]int{}, 4))
+}
+```
+
+And its output:
+
+```console
+$ go run .
+[1 2 3 4]
+[4]
+```
+
