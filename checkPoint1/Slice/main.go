@@ -17,16 +17,16 @@ func Slice(a []string, nbrs ...int) []string {
 	if len(nbrs) == 0 {
 		return a
 	}
- 	if nbrs[0] < 0 {
+	if nbrs[0] < 0 {
 		nbrs[0] += len(a)
 	}
-	
+
 	fmt.Println(nbrs)
 	if len(nbrs) == 1 {
 		return a[nbrs[0]:]
 	}
 	if len(nbrs) == 2 {
-		if nbrs[1] < 0  {
+		if nbrs[1] < 0 {
 			nbrs[1] += len(a)
 		}
 		if nbrs[0] > nbrs[1] {
