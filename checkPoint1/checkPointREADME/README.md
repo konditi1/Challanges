@@ -1357,36 +1357,50 @@ import "piscine"
 func main() {
 	piscine.PrintComb()
 }
-4
-subjects/printmemory/README.md
-Unescape
-View File
-@ -23,8 +23,10 @@ Here is a possible program to test your function :
+
+## printmemory
+
+### Instructions
+
+Write a function that takes `(arr [10]byte)`, and displays the memory as in the example.
+
+After displaying the memory the function must display all the ASCII graphic characters. The non printable characters must be replaced by a dot.
+
+The ASCII graphic characters are any characters intended to be written, printed, or otherwise displayed in a form that can be read by humans, present on the ASCII encoding.
+
+### Expected function
+
+```go
+func PrintMemory(arr [10]byte) {
+
+}
+```
+
+### Usage
+
+Here is a possible program to test your function :
+
 ```go
 package main
 
 import "piscine"
 
 func main() {
-	PrintMemory([10]byte{'h', 'e', 'l', 'l', 'o', 16, 21, '*'})
 	piscine.PrintMemory([10]byte{'h', 'e', 'l', 'l', 'o', 16, 21, '*'})
 }
 ```
 
+And its output :
 
-7
-subjects/printmemory/main.go
-Unescape
-View File
-@ -0,0 +1,7 @@
-package main
+```console
+$ go run . | cat -e
+68 65 6c 6c$
+6f 10 15 2a$
+00 00$
+hello..*..$
+$
+```
 
-import "piscine"
-
-func main() {
-	piscine.PrintMemory([10]byte{'h', 'e', 'l', 'l', 'o', 16, 21, '*'})
-}
-9
 
 ## retainfirsthalf
 #### Instructions
@@ -1426,27 +1440,31 @@ A$
 $
 Hello$
 `
-
-9
-
 ## revconcatalternate
-#### Instructions
-- Write a function RevConcatAlternate() that receives two slices of int as arguments and returns a new slice with alternated values of each slice in reverse order.
 
-The input slices can have different lengths.
-The new slice should start with the elements from the largest slice first and when they became equal size slices, it should add an element of the first given slice.
-If the slices are of equal length, the new slice should start with an element of the first slice.
-Note: you can check the examples bellow for more details.
+### Instructions
 
-# Expected function
-`
+Write a function `RevConcatAlternate()` that receives two slices of `int` as arguments and returns a new slice with alternated values of each slice in reverse order.
+
+- The input slices can have different lengths.
+- The new slice should start with the elements from the largest slice first and when they became equal size slices, it should add an element of the first given slice.
+- If the slices are of equal length, the new slice should start with an element of the first slice.
+
+> Note: you can check the examples bellow for more details.
+
+### Expected function
+
+```go
 func RevConcatAlternate(slice1,slice2 []int) []int {
 
 }
-`
-Usage
+```
+
+### Usage
+
 Here is a possible program to test your function:
-`
+
+```go
 package main
 
 import (
@@ -1460,15 +1478,17 @@ func main() {
 	fmt.Println(piscine.RevConcatAlternate([]int{1, 2, 3, 9, 8}, []int{4, 5}))
 	fmt.Println(piscine.RevConcatAlternate([]int{1, 2, 3}, []int{}))
 }
-`
+```
+
 And its output:
-`
+
+```console
 $ go run .
 [3 6 2 5 1 4]
 [9 8 7 3 6 2 5 1 4]
 [8 9 3 2 5 1 4]
 [3 2 1]
-`
+```
 
 45
 subjects/rot14-exam/README.md

@@ -1,0 +1,9 @@
+go 1.18
+
+use (
+	.
+	./ascii-art
+	./checkPoint1
+	./checkPoint1/piscine
+	./math-skills
+)

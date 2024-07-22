@@ -12,8 +12,7 @@ func Capitalize(s1 string) string {
 	s := ToLower(s1)
 	str := ""
 	for i := 0; i < len(s); i++ {
-		if i > 0 && !IsAlpha(string(s[i-1])) && IsAlpha(string(s[i])) {
-			if i 
+		if i > 0 && !IsAlphaNum(string(s[i-1])) && IsAlpha(string(s[i])) {
 			str += ToUpper(string(s[i]))
 		} else {
 			if i == 0 {
@@ -49,4 +48,15 @@ func ToLower(s string) string {
 
 func ToUpper(s string) string {
 	return string(s[0] - 32)
+}
+
+func IsAlphaNum(s string) bool {
+	for i := 0; i < len(s); i++ {
+		if (s[i] >= 'a' && s[i] <= 'z') ||
+		(s[i] >= 'A' && s[i] <= 'Z') ||
+		(s[i] >= '0' && s[i] <= '9') {
+			return true
+		}
+	}
+	return false
 }
