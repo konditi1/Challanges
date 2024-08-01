@@ -11,6 +11,9 @@ func main() {
 }
 
 func FifthAndSkip(str string) string {
+	if len(str) == 0 {
+		return "\n"
+	}
 	if len(str) < 5 {
 		return "Invalid Input\n"
 	}
